@@ -1,4 +1,5 @@
 mod node;
+mod network;
 use node::Node;
 use std::io;
 
