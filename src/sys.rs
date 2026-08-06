@@ -51,12 +51,12 @@ struct WSADATA {
 
 #[cfg(windows)]
 #[link(name = "ws2_32")]
-extern "system" {
+
+unsafe extern "system" {
     fn WSAStartup(wVersionRequested: u16, lpWSAData: *mut WSADATA) -> i32;
     fn socket(af: i32, type_: i32, protocol: i32) -> RawSocket;
     fn closesocket(s: RawSocket) -> i32;
 }
-
 #[cfg(windows)]
 pub fn create_tcp_socket() -> io::Result<RawSocket> {
     unsafe {
